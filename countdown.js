@@ -4,7 +4,7 @@
 const countdownElement = document.getElementById('DestructionTimer');
 
 // Set the target date for the countdown (May 16th of the current year)
-const targetDate = new Date(new Date().getFullYear(), 4, 10);
+const targetDate = new Date(new Date().getFullYear(), 4, 17);
 
 // Function to update the countdown
 function updateCountdown() {
