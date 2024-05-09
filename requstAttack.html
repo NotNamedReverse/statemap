@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Request attack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="Title">Request attack form.</h2>
+    <br>
+
+    <div class="input-container">
+        <input id="nameInput", placeholder="Enter name here">
+        <br>
+        <br>
+        <input id="attackFrom", placeholder="Where u attacking from?">
+        <br>
+        <br>
+        <br>
+        <br>
+        <button id="submitAttack"> Submit Attack </button>
+        <br>
+        <br>
+        <button id="backButton"> Go back </button>
+    </div>
+
+    <h5 class="current-ownership">CURRENT OWNERSHIP MAP</h5>
+    <img src="States.png" width="1000" alt="Current Ownership Map">
+</body>
+
+<script>
+    const sendRequest = document.getElementById("submitAttack");
+    const backButton = document.getElementById("backButton");
+
+    function lettersToNumbers(str) {
+        const result = [];
+
+        for (let char of str) {
+            const charCode = char.toLowerCase().charCodeAt(0);
+
+            // Check if the character is a letter (a-z)
+            if (charCode >= 97 && charCode <= 122) {
+                result.push(charCode - 96); // a = 1, b = 2, ..., z = 26
+            } else {
+                result.push(char); // Add non-letter characters unchanged
+            }
+        }
+
+        return result.join(" ");
+    }
+
+    sendRequest.onclick = function attackSubmit()
+    {
+        var personName = document.getElementById("nameInput").value;
+        var attackingFrom = document.getElementById("attackFrom").value;
+
+        var encodedMessage = lettersToNumbers("attacking-from::" + attackingFrom + " ::and-wanting-to-attack: ")
+
+        window.open('mailto:statewarrequests@outlook.com?subject=attackrequest-' + personName + '&body=IF YOU ARE READING THIS DO NOT MODIFY ANYTHING BELOW! JUST CLICK SEND! %0A%0A%0A' + encodedMessage);
+    
+        window.location.href = "/index.html"
+    }
+
+    backButton.onclick = function goBack()
+    {
+        window.location.href = "/index.html"
+    }
+    
+</script>
+
+</html>

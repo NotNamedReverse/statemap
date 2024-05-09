@@ -17,4 +17,17 @@ h2#DestructionTimer {
 
 h5.current-ownership {
     text-align: center;
+    text-decoration: underline;
+    font-size: larger;
+}
+h6.lastUpdated {
+    text-align: center;
+    text-decoration: underline;
+    font-size: small;
+}
+
+.input-container{
+    display: inline-block; /* Ensures the container wraps content size */
+    text-align: center; /* Centers contents within the container */
+    margin-top: 20px;
 }

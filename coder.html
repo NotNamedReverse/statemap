@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Letter to Number Encoder & Decoder</title>
+    <script>
+        // Function to convert letters to numbers
+        function lettersToNumbers(str) {
+            const result = [];
+
+            for (let char of str) {
+                const charCode = char.toLowerCase().charCodeAt(0);
+
+                // Check if the character is a letter (a-z)
+                if (charCode >= 97 && charCode <= 122) {
+                    result.push(charCode - 96); // a = 1, b = 2, ..., z = 26
+                } else {
+                    result.push(char); // Add non-letter characters unchanged
+                }
+            }
+
+            return result.join(" ");
+        }
+
+        // Function to convert numbers back to letters
+        function numbersToLetters(str) {
+            const result = [];
+            const parts = str.split(/\s+/); // Split on spaces or consecutive spaces
+
+            for (let part of parts) {
+                const number = parseInt(part, 10);
+
+                // Check if the part is a valid number representing a letter
+                if (number >= 1 && number <= 26) {
+                    result.push(String.fromCharCode(number + 96)); // 1 = a, 2 = b, ..., 26 = z
+                } else {
+                    result.push(part); // Add non-number parts unchanged
+                }
+            }
+
+            return result.join("");
+        }
+
+        // Function to handle the encoding button click
+        function encodeAndDisplay() {
+            const input = document.getElementById('letterInput').value;
+            const output = lettersToNumbers(input);
+            document.getElementById('result').innerText = `Encoded: ${output}`;
+        }
+
+        // Function to handle the decoding button click
+        function decodeAndDisplay() {
+            const input = document.getElementById('numberInput').value;
+            const output = numbersToLetters(input);
+            document.getElementById('result').innerText = `Decoded: ${output}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Letter to Number Encoder & Decoder</h1>
+    <div>
+        <h2>Encoder</h2>
+        <input type="text" id="letterInput" placeholder="Enter letters here">
+        <button onclick="encodeAndDisplay()">Encode</button>
+    </div>
+    <div>
+        <h2>Decoder</h2>
+        <input type="text" id="numberInput" placeholder="Enter numbers here (e.g. 1 2 3)">
+        <button onclick="decodeAndDisplay()">Decode</button>
+    </div>
+    <p id="result"></p>
+</body>
+</html>
