@@ -23,6 +23,17 @@
     <br>
     <h6 class="lastUpdated">last updated: 5/9/24: 12:37 PM</h5>
     <h5 class="current-ownership">CURRENT OWNERSHIP MAP</h5>
+    <!-- start Fla-shop.com HTML5 Map -->
+    <div id='map-container'></div>
+    <link href="map.css" rel="stylesheet">
+    <script src="raphael.min.js"></script>
+    <script src="settings.js"></script>
+    <script src="paths.js"></script>
+    <script src="map.js"></script>
+    <script>
+      var map = new FlaMap(map_cfg);
+      map.drawOnDomReady('map-container');
+    </script>
     <img src="States.png" width="1000" alt="Current Ownership Map">
 </body>
 </html>
